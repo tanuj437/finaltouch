@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}My Home Page{% endblock %}
+{% block content %}
+    <label>Thank You For your Ratings...</label>
+    {% for item in data %}
+		<li>{{ contents[loop.index0] }} - {{ item }} </li>
+	{% endfor %}
+{% endblock %}

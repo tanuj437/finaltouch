@@ -1,0 +1,167 @@
+{% extends "base.html" %} 
+{% block title %}Movie Rating App{% endblock %}
+{% block content %}
+<script>
+  function updateRating(checkboxId,ratinginputID) {
+    const checkbox = document.getElementById(checkboxId);
+    const ratingInput = document.getElementById(ratinginputID);
+    if (checkbox.checked) {
+      ratingInput.style.display = "inline";
+    }
+    else{
+      ratingInput.style.display = "none";
+    }
+  }
+</script>
+    <h1 id="main" class="spaces">Rate a Movie</h1>
+    <form id="form" action="/submit" method="POST">
+      <label id="chote" for="movie-name"><h2>Movie Name:</h2></label>
+      <h3><input type="text" id="movie-name" name="movie_name" class="spaces" class="mainspace"></h3><br><br>
+      
+      <label id="chote" for="overall-rating"><h2>Overall Rating (1-10):</h2></label>
+      <h3><input type="number" id="overall-rating" name="overall_rating" min="1" max="10" class="spaces" class="mainspace"></h3><br><br>
+      
+      <label id="chote"><h2>Genres:</h2></label><br><br>
+      <div id="maindiv" style="display: flex;">
+        <div style="margin-right: 40px;margin-left: 68px;">
+          <input type="checkbox" id="action" name="genres[]" value="Action" onclick="updateRating('action','action-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="action">Action</label>
+          <input type="number" id="action-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="adventure" name="genres[]" value="Adventure" onclick="updateRating('adventure','adventure-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="adventure">Adventure</label>
+          <input type="number" id="adventure-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="sci-fi" name="genres[]" value="Sci-Fi" onclick="updateRating('sci-fi','sci-fi-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="sci-fi">Sci-Fi</label>
+          <input type="number" id="sci-fi-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="drama" name="genres[]" value="Drama" onclick="updateRating('drama','drama-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="drama">Drama</label>
+          <input type="number" id="drama-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="comedy" name="genres[]" value="Comedy" onclick="updateRating('comedy','comedy-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="comedy">Comedy</label>
+          <input type="number" id="comedy-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="romance" name="genres[]" value="Romance" onclick="updateRating('romance','romance-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="romance">Romance</label>
+          <input type="number" id="romance-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+      </div>
+      <div id="maindiv" style="display: flex;">
+        <div style="margin-right: 40px;margin-left: 68px;">
+          <input type="checkbox" id="musical" name="genres[]" value="Musical" onclick="updateRating('musical','musical-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="musical">Musical</label>
+          <input type="number" id="musical-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="war" name="genres[]" value="War" onclick="updateRating('war','war-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="war">War</label>
+          <input type="number" id="war-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="horror" name="genres[]" value="Horror" onclick="updateRating('horror','horror-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="horror">Horror</label>
+          <input type="number" id="horror-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="history" name="genres[]" value="History" onclick="updateRating('history','history-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="history">History</label>
+          <input type="number" id="history-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="mystery" name="genres[]" value="Mystery" onclick="updateRating('mystery','mystery-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="mystery">Mystery</label>
+          <input type="number" id="mystery-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="thriller" name="genres[]" value="Thriller" onclick="updateRating('thriller','thriller-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="thriller">Thriller</label>
+          <input type="number" id="thriller-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+      </div>
+      <div id="maindiv" style="display: flex;">
+        <div style="margin-right: 40px;margin-left: 68px;">
+          <input type="checkbox" id="crime" name="genres[]" value="Crime" onclick="updateRating('crime','crime-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="crime">Crime</label>
+          <input type="number" id="crime-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="sport" name="genres[]" value="Sport" onclick="updateRating('sport','sport-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="sport">Sport</label>
+          <input type="number" id="sport-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="biography" name="genres[]" value="Biography" onclick="updateRating('biography','biography-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="biography">Biography</label>
+          <input type="number" id="biography-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+  
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="fantasy" name="genres[]" value="Fantasy" onclick="updateRating('fantasy','fantasy-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="fantasy">Fantasy</label>
+          <input type="number" id="fantasy-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="family" name="genres[]" value="Family" onclick="updateRating('family','family-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="family">Family</label>
+          <input type="number" id="family-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;"> 
+          <input type="checkbox" id="documentary" name="genres[]" value="Documentary" onclick="updateRating('documentary','documentary-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="documentary">Documentary</label>
+          <input type="number" id="documentary-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+      </div>
+      <div id="maindiv" style="display: flex;">
+        <div style="margin-right: 40px;margin-left: 68px;">
+          <input type="checkbox" id="music" name="genres[]" value="Music" onclick="updateRating('music','music-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="music">Music</label>
+          <input type="number" id="music-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="animation" name="genres[]" value="Animation" onclick="updateRating('animation','animation-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="animation">Animation</label>
+          <input type="number" id="animation-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="news" name="genres[]" value="News" onclick="updateRating('news','news-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="news">News</label>
+          <input type="number" id="news-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+
+        <div style="margin-right: 40px;">
+          <input type="checkbox" id="western" name="genres[]" value="Western" onclick="updateRating('western','western-ratings')" class="spaces" style="display: inline;">
+          <label id="genres" for="western">Western</label>
+          <input type="number" id="western-ratings" name="genre_ratings[]" min="1" max="10" class="spaces" style="display:none;"><br>
+        </div>
+      </div>
+      <br><br>
+
+
+      <input type="submit" value="Rate now" class="spaces" id="submit" >
+
+    </form>
+{% endblock %}
